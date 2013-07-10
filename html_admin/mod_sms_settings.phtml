@@ -1,0 +1,80 @@
+{% extends request.ajax ? "layout_blank.phtml" : "layout_default.phtml" %}
+{% import "macro_functions.phtml" as mf %}
+{% block meta_title %}Konfiguracja Powiadomień sms - Ticketów{% endblock %}
+{% set active_menu = 'extensions' %}
+
+{% block breadcrumbs %}
+<ul>
+    <li class="firstB"><a href="{{ '/'|alink }}">{% trans 'Home' %}</a></li>
+    <li><a href="{{ 'autoticket'|alink }}">{% trans 'SMS' %}</a></li>
+    <li class="lastB">{% trans 'Konfiguracja Powiadomień sms - Ticketów' %}</li>
+</ul>
+{% endblock %}
+
+{% block content %}
+
+<div class="widget">
+    <div class="head">
+        <h5 class="iCog">{% trans 'Konfiguracja Powiadomień sms' %}</h5>
+    </div>
+
+{% set params = admin.extension_config_get({"ext":"mod_sms"}) %}
+
+<form method="post" action="admin/extension/config_save" class="mainForm api-form" data-api-msg="{% trans 'Configuration updated' %}">
+    
+    <div class="help">
+        <h3>{% trans 'Ustawienia SMS' %}</h3>
+        <p>{% trans 'Powiadomienia sms dla administratora o nowych ticketach, aby działały należy założyć konto na <a href="http://www.smsapi.pl/">http://www.smsapi.pl/</a>' %}</p>
+    </div>
+    
+    <fieldset>
+        <div class="rowElem">
+            <label>{% trans 'Username' %}</label>
+            <div class="formRight">
+                <input type="text" name="sms_username" value="{{params.sms_username}}" placeholder="{% trans 'Nazwa Użytkownika' %}"/>
+            </div>
+            <div class="fix"></div>
+        </div>
+
+		<div class="rowElem">
+            <label>{% trans 'Password' %}</label>
+            <div class="formRight">
+                <input type="text" name="sms_password" value="{{params.sms_password}}" placeholder="{% trans 'Hasło do API' %}"/>
+            </div>
+            <div class="fix"></div>
+        </div>
+        
+        <div class="rowElem">
+            <label>{% trans 'Numer Tel. Odbiorcy' %}</label>
+            <div class="formRight">
+                <input type="text" name="sms_odbiorca" value="{{params.sms_odbiorca}}"/>
+            </div>
+            <div class="fix"></div>
+        </div>
+        
+        <div class="rowElem">
+            <label>{% trans 'Nadawca' %}</label>
+            <div class="formRight">
+                <input type="text" name="sms_nadawca" value="{{params.sms_nadawca}}"/>
+                <small>Np. Web Hosting</small>
+            </div>
+            <div class="fix"></div>
+        </div>
+        
+        <div class="rowElem">
+            <label>{% trans 'Wiadomość' %}</label>
+            <div class="formRight">
+                <input type="text" name="sms_wiad" value="{{params.sms_wiad}}"/>
+                <small>Nadawca musi być dodany na tej stronie: https://ssl.smsapi.pl/sms_settings</small>
+            </div>
+            <div class="fix"></div>
+        </div>
+
+        <input type="submit" value="{% trans 'Update' %}" class="greyishBtn submitForm" />
+        <input type="hidden" name="ext" value="mod_sms" />
+        <input type="hidden" name="rel_type" value="settings" />
+    </fieldset>
+</form>
+</div>
+
+{% endblock %}
