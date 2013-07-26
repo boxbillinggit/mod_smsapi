@@ -1,6 +1,6 @@
 <?php
 
-class Box_Mod_Sms_Service
+class Box_Mod_Smsapi_Service
 {
     /**
      * Method to install module. In most cases you will provide your own
@@ -115,7 +115,7 @@ class Box_Mod_Sms_Service
         $params = $event->getParameters();
         
         $meta = R::dispense('extension_meta');
-        $meta->extension = 'mod_autoticket';
+        $meta->extension = 'mod_smsapi';
         $meta->meta_key = 'event_params';
         $meta->meta_value = json_encode($params);
         $meta->created_at = date('c');
@@ -161,7 +161,7 @@ class Box_Mod_Sms_Service
 								$ile = count($licze);
 				
 				 $params = array(
-				 "ext" => "mod_sms",
+				 "ext" => "mod_smsapi",
 				 );	
 					
 				 $result = $api->extension_config_get($params);
@@ -171,7 +171,7 @@ class Box_Mod_Sms_Service
 				);				
 				
 				if($ile == 0) { } else {
-				Box_Mod_Sms_Api_Admin::sendsms($result+$par);
+				Box_Mod_Smsapi_Api_Admin::sendsms($result+$par);
 				}
 		
 	}

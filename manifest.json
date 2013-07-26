@@ -1,5 +1,5 @@
 {
-    "id":           "sms",
+    "id":           "smsapi",
 	"type":         "mod",
     "name":         "Powiadomienia SMS",
     "description":  "Moduł automatycznego Powiadomień SMS.",
@@ -7,7 +7,7 @@
     "homepage_url": "http://www.boxbilling.pl/",
     "author":       "Zaba",
     "author_url":   "",
-	"download_url": "https://github.com/zaba12/mod_sms",
+	"download_url": "https://github.com/zaba12/mod_smsapi",
     "license":      "GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html",
     "version":      "1.2.5"
 }

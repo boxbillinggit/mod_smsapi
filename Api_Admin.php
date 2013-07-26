@@ -3,7 +3,7 @@
  * Example module API
  * This api can be access only for admins
  */
-class Box_Mod_Sms_Api_Admin extends Api_Abstract
+class Box_Mod_Smsapi_Api_Admin extends Api_Abstract
 {
 
 

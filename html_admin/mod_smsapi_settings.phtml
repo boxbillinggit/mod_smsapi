@@ -6,7 +6,7 @@
 {% block breadcrumbs %}
 <ul>
     <li class="firstB"><a href="{{ '/'|alink }}">{% trans 'Home' %}</a></li>
-    <li><a href="{{ 'autoticket'|alink }}">{% trans 'SMS' %}</a></li>
+    <li><a href="{{ 'smsapi'|alink }}">{% trans 'SMS' %}</a></li>
     <li class="lastB">{% trans 'Konfiguracja Powiadomień sms - Ticketów' %}</li>
 </ul>
 {% endblock %}
@@ -18,7 +18,7 @@
         <h5 class="iCog">{% trans 'Konfiguracja Powiadomień sms' %}</h5>
     </div>
 
-{% set params = admin.extension_config_get({"ext":"mod_sms"}) %}
+{% set params = admin.extension_config_get({"ext":"mod_smsapi"}) %}
 
 <form method="post" action="admin/extension/config_save" class="mainForm api-form" data-api-msg="{% trans 'Configuration updated' %}">
     
@@ -71,7 +71,7 @@
         </div>
 
         <input type="submit" value="{% trans 'Update' %}" class="greyishBtn submitForm" />
-        <input type="hidden" name="ext" value="mod_sms" />
+        <input type="hidden" name="ext" value="mod_smsapi" />
         <input type="hidden" name="rel_type" value="settings" />
     </fieldset>
 </form>
